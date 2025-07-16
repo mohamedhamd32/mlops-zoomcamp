@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  evidently:
+    image: evidentlyai/evidently:latest
+    ports:
+      - "9000:9000"
+    environment:
+      - EVIDENTLY_ALLOW_PUBLIC_PROJECTS=true
+
