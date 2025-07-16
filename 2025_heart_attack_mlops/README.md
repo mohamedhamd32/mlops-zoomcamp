@@ -20,10 +20,11 @@ This repository showcases the application of MLOps principles to a real-world pr
 
 ### A. Installation
 1. Install Git and docker-compose (or docker compose) 
-2. Pull from GitHub using `git clone https://github.com/kev-wes/2024_heart_attack_mlops.git`
-3. Move to repo `cd 2024_heart_attack_mlops`
+2. Pull from GitHub using `git clone https://github.com/mohamedhamd32/2025_mlops_project_heart_attack.git`
+3. Move to repo `cd 2025_mlops_project_heart_attack.git`
 4. `docker-compose build` (or 'docker compose build') 
 5. `docker-compose up` (or 'docker compose up') 
+<img width="226" height="61" alt="Image" src="https://github.com/user-attachments/assets/9a040b62-d46d-4139-bee8-4b144332eb7c" />
 
 ### B. Training a Model
 1. Train a model by opening prefect over `http://localhost:4200/`.
@@ -79,52 +80,3 @@ This repository showcases the application of MLOps principles to a real-world pr
 - __README.md__: This file.
 
 
-## Evaluation criteria
-* __Problem description__
-    * [ ] 0 points: The problem is not described
-    * [ ] 1 point: The problem is described but shortly or not clearly 
-    * [x] 2 points: The problem is well described and it's clear what the problem the project solves
-      * I provided an in-depth problem statement, instructions for use, and explained the repository structure.
-* __Cloud__
-    * [x] 0 points: Cloud is not used, things run only locally
-      * Everything is hosted locally on an ubuntu server. It can be hosted anywhere on premise and can be accessed outside through the hosted web services, but it does not use cloud or IaC tools.
-    * [ ] 2 points: The project is developed on the cloud OR uses localstack (or similar tool) OR the project is deployed to Kubernetes or similar container management platforms
-    * [ ] 4 points: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
-* __Experiment tracking and model registry__
-    * [ ] 0 points: No experiment tracking or model registry
-    * [ ] 2 points: Experiments are tracked or models are registered in the registry
-    * [x] 4 points: Both experiment tracking and model registry are used 
-      * I do hyperparameter tuning in 'src/hyperopt_register_model.py' where I track experiments and promote the best model to the model registry. I then load the model from model registry in 'predict.py'. 
-* __Workflow orchestration__
-    * [ ] 0 points: No workflow orchestration
-    * [ ] 2 points: Basic workflow orchestration
-    * [x] 4 points: Fully deployed workflow  
-      * I used prefect for workflow orchestration (cf. course material from 2023). Unfortunately, Mage did not work for me. I added @task and @flow decorators to my code. I also created a prefect deployment for hyperparameter optimization, model registration, and monitoring. Additionally I created a workpool with one worker that automatically starts a hyperparameter optimization and model registration run. Each run, returns a markdown report as artifact.
-* __Model deployment__
-    * [ ] 0 points: Model is not deployed
-    * [ ] 2 points: Model is deployed but only locally
-    * [x] 4 points: The model deployment code is containerized and could be deployed to cloud or special tools for model deployment are used 
-      * I hosted the model as a webservice that is reachable under 'localhost:8000'. Additionally, I fully containerized the code using docker-compose.
-* __Model monitoring__
-    * [ ] 0 points: No model monitoring
-    * [ ] 2 points: Basic model monitoring that calculates and reports metrics
-    * [x] 4 points: Comprehensive model monitoring that sends alerts or runs a conditional workflow (e.g. retraining, generating debugging dashboard, switching to a different model) if the defined metrics threshold is violated 
-      * I calculate dataset drift metrics between current data (data/heart.csv) and reference data set (data/reference.csv) and send out an email alert.
-* __Reproducibility__
-    * [ ] 0 points: No instructions on how to run the code at all, the data is missing
-    * [ ] 2 points: Some instructions are there, but they are not complete OR instructions are clear and complete, the code works, but the data is missing
-    * [x] 4 points: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified. 
-      * I used pipenv so that all versions for all dependencies are specified. Additionally I provide instructions to run the code above and bundled everything using docker-compose to make startup easy.
-* __Best practices__
-    * [x] There are unit tests (1 point) 
-      * I created a unit test for data preprocessing. 'tests/unit_test' tests the function 'preprocess_data' that is stored in 'src/helper.py' and is used for training ('hyperopt_register_model.py') and prediction ('app.py').
-    * [ ] There is an integration test (1 point) 
-      * I do not use integration tests.
-    * [ ] Linter and/or code formatter are used (1 point) 
-      * I do not use linter or code formatter.
-    * [ ] There's a Makefile (1 point) 
-      * I do not use a Makefile.
-    * [ ] There are pre-commit hooks (1 point) 
-      * I do not use pre-commit hooks.
-    * [ ] There's a CI/CD pipeline (2 points) 
-      * I do not have a CI/CD pipeline.
