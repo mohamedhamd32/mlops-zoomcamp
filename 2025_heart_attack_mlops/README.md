@@ -25,14 +25,26 @@ This repository showcases the application of MLOps principles to a real-world pr
 4. `docker-compose build` (or 'docker compose build') 
 5. `docker-compose up` (or 'docker compose up') 
 <img width="226" height="61" alt="Image" src="https://github.com/user-attachments/assets/9a040b62-d46d-4139-bee8-4b144332eb7c" />
+<img width="1239" height="118" alt="Image" src="https://github.com/user-attachments/assets/f103e769-ac79-4483-88cd-173883a24654" />
+
 
 ### B. Training a Model
 1. Train a model by opening prefect over `http://localhost:4200/`.
 2. Go to `Deployments`
 3. For the deployment `train-heart-attack-model` start `Quick run`. Now a hyperparameter tuning is performed and the best model is registered via MLflow.
 
+perfect ui:
+
+   <img width="1280" height="598" alt="Image" src="https://github.com/user-attachments/assets/179fd9d5-b0fc-4aa5-8344-cda0d6b327a0" />
+
+mlflow tracking for best model: 
+
+   <img width="1278" height="563" alt="Image" src="https://github.com/user-attachments/assets/6bdb27bb-093c-4af4-a033-3e930db0f94e" />
+
 ### C. Heart Attack Risk Prediction
 1. __Important: You have to train a model first!__ Open `http://localhost:8000/` in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
+
+  <img width="686" height="394" alt="Image" src="https://github.com/user-attachments/assets/2b3ba168-9bf3-4226-9325-bc95b64f27fa" /> 
 
 ### D. Monitoring Data Drift (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
@@ -44,7 +56,10 @@ This repository showcases the application of MLOps principles to a real-world pr
    - Set `Block Name` to `gmail`
    - Input your gmail username via `Username` and your app password set register in step 1 via `Password`
    - Set `SMPTServer` to `smtp.gmail.com`, `SMTP Type` to `SSL`, and `SMTP Port` to `465`
-3. Monitor dataset ad hoc (you can also create a schedule) by going to `Deyploments` again. Start a custom run of deployment `monitor-heart-attack-data-drift`. Set `recipient` to an email address you want to send the data drift alert to. 
+3. Monitor dataset ad hoc (you can also create a schedule) by going to `Deyploments` again. Start a custom run of deployment `monitor-heart-attack-data-drift`. Set `recipient` to an email address you want to send the data drift alert to.
+
+   <img width="2270" height="677" alt="image" src="https://github.com/user-attachments/assets/38509b2e-98f2-49c7-9556-6ddd530cf40a" />
+
 
 ## Repository Contents
 
