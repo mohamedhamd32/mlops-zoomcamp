@@ -44,6 +44,8 @@ mlflow tracking for best model:
 ### C. Heart Attack Risk Prediction
 1. __Important: You have to train a model first!__ Open `http://localhost:8000/` in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
 
+mlflow ui with best model performance : 
+
   <img width="686" height="394" alt="Image" src="https://github.com/user-attachments/assets/2b3ba168-9bf3-4226-9325-bc95b64f27fa" /> 
 
 ### D. Monitoring Data Drift (only Gmail for sending supported!)
@@ -57,6 +59,8 @@ mlflow tracking for best model:
    - Input your gmail username via `Username` and your app password set register in step 1 via `Password`
    - Set `SMPTServer` to `smtp.gmail.com`, `SMTP Type` to `SSL`, and `SMTP Port` to `465`
 3. Monitor dataset ad hoc (you can also create a schedule) by going to `Deyploments` again. Start a custom run of deployment `monitor-heart-attack-data-drift`. Set `recipient` to an email address you want to send the data drift alert to.
+
+here is example of generated report by evidently : 
 
    <img width="2270" height="677" alt="image" src="https://github.com/user-attachments/assets/38509b2e-98f2-49c7-9556-6ddd530cf40a" />
 
